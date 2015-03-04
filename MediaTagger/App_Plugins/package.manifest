@@ -1,0 +1,24 @@
+﻿{   
+    propertyEditors: [      
+        {
+            alias: "MediaTagger.Picker",
+            name: "Media Picker (by tag)",
+            editor: {
+                view: "~/App_Plugins/MediaTagger/Picker/_picker.html",
+				valueType: "INT"
+            }
+        }
+    ],
+
+    javascript: [
+		'~/App_Plugins/MediaTagger/Picker/mediatagger.picker.controller.js', 
+		'~/App_Plugins/MediaTagger/Dashboard/mediatagger.dashboard.controller.js', 
+		'~/App_Plugins/MediaTagger/Dialog/mediatagger.dialog.controller.js', 
+		'~/App_Plugins/MediaTagger/mediatagger.resource.js'
+    ],
+
+    css: [
+		'~/App_Plugins/MediaTagger/mediatagger.css'
+    ]
+}
+ 

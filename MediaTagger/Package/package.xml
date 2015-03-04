@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>MediaTagger.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>MediaTagger.dll</orgName>
+    </file>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/MediaTagger</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>Installer.ascx</guid>
+      <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
+      <orgName>Installer.ascx</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>MediaTagger</name>
+      <version>0.1.0</version>
+      <license url="http://opensource.org/licenses/MIT">MIT License</license>
+      <url>MediaTagger</url>
+      <requirements>
+        <major>7</major>
+        <minor>1</minor>
+        <patch>4</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Alain</name>
+      <website>-</website>
+    </author>
+    <readme><![CDATA[MediaTagger v0.1.0 requires Umbraco v7.1.4 or above]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes>
+    <DataType Name="Media Picker (by tag)" Id="MediaTagger.Picker" Definition="ac89755c-b6cc-45f9-bc96-aa4c382e90ce" DatabaseType="Integer">
+      <PreValues>
+      </PreValues>
+    </DataType>
+    <!--
+    <DataType Name="Media Tags" Id="Umbraco.Tags" Definition="c251b5ad-a5b3-469d-add1-ed57b1608cb5" DatabaseType="Ntext">
+      <PreValues>
+        <PreValue Id="1" Alias="group" Value="mediaTagger" />
+      </PreValues>
+    </DataType>
+    -->
+  </DataTypes>  
+  <Actions>
+    <Action runat="install" alias="addDashboardSection" dashboardAlias="MediaTagger">
+      <section>
+        <areas>
+          <area>media</area>
+        </areas>
+        <tab caption="Media Tagger">
+          <control>/App_Plugins/MediaTagger/Dashboard/_dashboard.html</control>
+        </tab>
+      </section>
+    </Action>
+  </Actions>
+  <control>/App_Plugins/MediaTagger/Installer/Installer.ascx</control>
+</umbPackage>

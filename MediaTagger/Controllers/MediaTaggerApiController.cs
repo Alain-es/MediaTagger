@@ -54,12 +54,12 @@ namespace MediaTagger.Controllers.Api
         /// <param name="tags"></param>
         /// <returns></returns>
         [System.Web.Http.HttpGet]
-        public IEnumerable<IMedia> GetMedias(string tags, int pageNumber = 0, int pageSize = 0)
+        public IEnumerable<IMedia> GetMedias(string tags, int pageNumber = 0, int pageSize = 0, int startMediaId = 0, bool restrictPrivateFolder = false)
         {
             IEnumerable<IMedia> result = new List<IMedia>();
 
             // Get the media items
-            List<int> mediaIds = GetMediasByTags(tags).Select(x => x.Id).Skip(pageNumber * pageSize).Take(pageSize != 0 ? pageSize : 999).ToList<int>();
+            List<int> mediaIds = GetMediasByTags(tags, startMediaId, restrictPrivateFolder).Select(x => x.Id).Skip(pageNumber * pageSize).Take(pageSize != 0 ? pageSize : 999).ToList<int>();
             if (mediaIds.Count > 0)
             {
                 //IEnumerable<IMedia> medias = ApplicationContext.Services.MediaService.GetByIds(mediaIds);
@@ -78,12 +78,12 @@ namespace MediaTagger.Controllers.Api
         }
 
         [System.Web.Http.HttpGet]
-        public PagedResult<ContentItemBasic<ContentPropertyBasic, IMedia>> GetPagedMedias(string tags, int pageNumber = 0, int pageSize = 0)
+        public PagedResult<ContentItemBasic<ContentPropertyBasic, IMedia>> GetPagedMedias(string tags, int pageNumber = 0, int pageSize = 0, int startMediaId = 0, bool restrictPrivateFolder = false)
         {
             int totalItems;
             IMedia[] items;
 
-            items = GetMedias(tags, pageNumber, pageSize).ToArray();
+            items = GetMedias(tags, pageNumber, pageSize, startMediaId, restrictPrivateFolder).ToArray();
 
             totalItems = items.Length;
             if (totalItems == 0)
@@ -98,34 +98,49 @@ namespace MediaTagger.Controllers.Api
         }
 
         [System.Web.Http.HttpGet]
-        public bool GetPagedMediasHasMoreResults(string tags, int pageNumber, int pageSize)
+        public bool GetPagedMediasHasMoreResults(string tags, int pageNumber, int pageSize, int startMediaId = 0, bool restrictPrivateFolder = false)
         {
             bool result = false;
-            if (!string.IsNullOrWhiteSpace(tags))
+            List<int> mediaIds = GetMediasByTags(tags, startMediaId, restrictPrivateFolder).Select(x => x.Id).Skip((pageNumber + 1) * pageSize).Take(pageSize != 0 ? pageSize : 999).ToList<int>();
+            if (mediaIds.Count > 0)
             {
-                List<int> mediaIds = GetMediasByTags(tags).Select(x => x.Id).Skip((pageNumber + 1) * pageSize).Take(pageSize != 0 ? pageSize : 999).ToList<int>();
-                if (mediaIds.Count > 0)
-                {
-                    result = true;
-                }
+                result = true;
             }
             return result;
         }
 
 
-        private ISearchResults GetMediasByTags(string tags)
+        private ISearchResults GetMediasByTags(string tags, int startMediaId, bool restrictPrivateFolder)
         {
             ISearchResults result = SearchResults.Empty();
 
-            // Querying by path for user permissions or starting node:  https://our.umbraco.org/forum/developers/extending-umbraco/11659-Examine-quering-path
+            // Get the current user's start media Id
+            var currentUserStartMediaId = UmbracoContext.Current.Security.CurrentUser.StartMediaId;
+            if (startMediaId == 0)
+            {
+                startMediaId = currentUserStartMediaId;
+            }
+            // Check whether the selected startMediaId node is underneath the current user StartMediaId
+            else
+            {
+                var startMedia = UmbracoContext.Current.Application.Services.MediaService.GetById(startMediaId);
+                if (startMedia != null)
+                {
+                    if (!startMedia.Path.Contains(startMediaId.ToString()))
+                    {
+                        startMediaId = currentUserStartMediaId;
+                    }
+                }
+            }
 
             // User examine to search media matching the selected tags
             var searchEngine = ExamineManager.Instance.SearchProviderCollection["ExternalSearcher"];
             var query = searchEngine.CreateSearchCriteria(UmbracoExamine.IndexTypes.Media, BooleanOperation.And).NodeTypeAlias("Image");
+            query = query.And().Field("mediaTaggerImagePath", startMediaId.ToString());
             if (!string.IsNullOrWhiteSpace(tags))
             {
                 // Filter by tags
-                query = query.And().GroupedOr(new string[] { "tags" }, tags.Split(',').ToArray());
+                query = query.And().GroupedOr(new string[] { "mediaTaggerImageTags" }, tags.Split(',').ToArray());
             }
             result = searchEngine.Search(query.Compile());
 

@@ -1,6 +1,6 @@
 ﻿<div ng-controller="MediaTagger.Dashboard.MediaTaggerDashboardController"
-    ng-show="!isLoading"
-    ng-if="authenticated">
+     ng-show="!isLoading"
+     ng-if="authenticated">
 
     <div class="umb-pane">
 
@@ -18,23 +18,22 @@
                 </span>
 
                 <input type="text"
-                    class="typeahead tags-searchbox"
-                    ng-model="$parent.tagToAdd"
-                    ng-keydown="$parent.addTagOnEnter($event)"
-                    on-blur="$parent.addTag()"
-                    localize="placeholder"
-                    placeholder="@placeholders_enterTags" no-dirty-check />
+                       class="typeahead tags-searchbox"
+                       ng-model="$parent.tagToAdd"
+                       ng-keydown="$parent.addTagOnEnter($event)"
+                       on-blur="$parent.addTag()"
+                       localize="placeholder"
+                       placeholder="@placeholders_enterTags" no-dirty-check />
             </div>
         </div>
 
-        <umb-photo-folder
-            min-height="220"
-            min-width="220"
-            on-click="clickHandler"
-            ng-model="images" />
+        <umb-photo-folder min-height="220"
+                          min-width="220"
+                          on-click="clickHandler"
+                          ng-model="images" />
 
     </div>
 
-    <button type="button" class="btn" ng-click="showMoreResults()" ng-show="areThereMoreResultsButton" ng-click="showMoreResults()" style="width: 100%">Show more results</button>
+    <button type="button" class="btn" ng-click="showMoreResults()" ng-show="areThereMoreResultsButton" style="width: 100%">Show more results</button>
 
 </div>

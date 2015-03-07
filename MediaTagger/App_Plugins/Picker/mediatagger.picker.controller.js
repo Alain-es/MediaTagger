@@ -8,14 +8,6 @@
         //check the pre-values for multi-picker
         var multiPicker = $scope.model.config.multiPicker && $scope.model.config.multiPicker !== '0' ? true : false;
 
-        if (!$scope.model.config.startNodeId) {
-            userService.getCurrentUser().then(function (userData) {
-                $scope.model.config.startNodeId = userData.startMediaId;
-            });
-        }
-
-
-
         function setupViewModel() {
             $scope.images = [];
             $scope.ids = [];
@@ -69,8 +61,9 @@
 
                 
             $scope.mediaPicker({
-                startNodeId: $scope.model.config.startNodeId,
-                    multiPicker: multiPicker,
+                startMediaId: $scope.model.config.startMediaId,
+                multiPicker: multiPicker,
+                restrictPrivateFolder: $scope.model.config.restrictPrivateFolder !== '0' ? true : false,
                 callback: function (data) {
 
                     //it's only a single selector, so make it into an array

@@ -16,23 +16,22 @@
                     </span>
 
                     <input type="text"
-                        class="typeahead tags-searchbox"
-                        ng-model="$parent.tagToAdd"
-                        ng-keydown="$parent.addTagOnEnter($event)"
-                        on-blur="$parent.addTag()"
-                        localize="placeholder"
-                        placeholder="@placeholders_enterTags" no-dirty-check />
+                           class="typeahead tags-searchbox"
+                           ng-model="$parent.tagToAdd"
+                           ng-keydown="$parent.addTagOnEnter($event)"
+                           on-blur="$parent.addTag()"
+                           localize="placeholder"
+                           placeholder="@placeholders_enterTags" no-dirty-check />
                 </div>
             </div>
 
             <div>
-                <umb-photo-folder
-                    min-height="105"
-                    min-width="150"
-                    max-height="250"
-                    ideal-items-per-row="3"
-                    on-click="clickHandler"
-                    ng-model="images" />
+                <umb-photo-folder min-height="105"
+                                  min-width="150"
+                                  max-height="250"
+                                  ideal-items-per-row="3"
+                                  on-click="clickHandler"
+                                  ng-model="images" />
                 <!--images-only="{{onlyImages}}"-->
             </div>
             <button type="button" class="btn" ng-click="showMoreResults()" ng-show="areThereMoreResultsButton" style="width: 100%">Show more results</button>
@@ -46,10 +45,9 @@
                         <localize key="general_cancel">Cancel</localize>
                     </a>
 
-                    <button
-                        class="btn btn-primary"
-                        ng-show="multiPicker"
-                        ng-click="submit(dialogData.selection)">
+                    <button class="btn btn-primary"
+                            ng-show="multiPicker"
+                            ng-click="submit(dialogData.selection)">
                         <localize key="buttons_select">Select</localize>
                         ({{dialogData.selection.length}})
                     </button>

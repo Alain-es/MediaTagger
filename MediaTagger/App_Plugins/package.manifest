@@ -5,8 +5,29 @@
             name: "Media Picker (by tag)",
             editor: {
                 view: "~/App_Plugins/MediaTagger/Picker/_picker.html",
-				valueType: "INT"
-            }
+				valueType: "INT",
+				hideLabel: false
+			},
+			prevalues : {
+				fields: [
+					{
+					    label: "Start media Id",
+					    description: "Start node in the Media Library to which the search will be restricted (only this node and its children)",
+					    key: "startMediaId",
+						view: "~/umbraco/Views/prevalueeditors/mediapicker.html"
+					},
+					{
+					    label: "Restrict to private folder",
+					    description: "In addition to the previous prevalue, this option restricts to a private folder which is a subfolder of the previous prevalue and which name must be the ID of the content node that contains the media picker property. If no start node is selected (previous prevalue) or if the subfolder doesn't exist, no result will be displayed.",
+					    key: "restrictPrivateFolder",
+						view: "boolean"
+					}
+				]
+			},
+			defaultConfig: {
+				startMediaId: 0,
+				restrictPrivateFolder: 0
+			}
         }
     ],
 

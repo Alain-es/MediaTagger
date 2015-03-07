@@ -12,6 +12,13 @@ angular.module("umbraco")
             $scope.onlyImages = dialogOptions.onlyImages;
             $scope.showDetails = dialogOptions.showDetails;
             $scope.multiPicker = (dialogOptions.multiPicker && dialogOptions.multiPicker !== "0") ? true : false;
+            $scope.restrictPrivateFolder = dialogOptions.restrictPrivateFolder;
+            if (!dialogOptions.startMediaId) {
+                $scope.startMediaId = 0;
+            }
+            else {
+                $scope.startMediaId = dialogOptions.startMediaId;
+            }
 
             $scope.clickHandler = function (image, ev, select) {
                 ev.preventDefault();
@@ -51,7 +58,7 @@ angular.module("umbraco")
                         $scope.currentPage = 0;
                     }
                     var tags = $scope.currentTags.join();
-                    MediaTaggerResource.getPagedMedias(tags, $scope.currentPage, pageSize).then(
+                    MediaTaggerResource.getPagedMedias(tags, $scope.currentPage, pageSize, $scope.startMediaId, $scope.restrictPrivateFolder).then(
                             function (response) {
                                 if (response.data.items) {
                                     if (addToCurrentResult != true) {
@@ -69,7 +76,7 @@ angular.module("umbraco")
                                 console.log(error);
                             }
                         );
-                    MediaTaggerResource.getPagedMediasHasMoreResults(tags, $scope.currentPage, pageSize).then(
+                    MediaTaggerResource.getPagedMediasHasMoreResults(tags, $scope.currentPage, pageSize, $scope.startMediaId, $scope.restrictPrivateFolder).then(
                             function (response) {
                                 $scope.areThereMoreResultsButton = response.data;
                             },

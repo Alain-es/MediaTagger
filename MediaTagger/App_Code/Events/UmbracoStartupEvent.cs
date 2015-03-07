@@ -41,18 +41,22 @@ namespace MediaTagger.Installer
             ExamineManager.Instance.IndexProviderCollection["ExternalIndexer"].GatheringNodeData += ExamineEvents_GatheringNodeData;
         }
 
-        // Removing commas for medias' tags property 
+        // Removing commas for medias' tags and path property
         private void ExamineEvents_GatheringNodeData(object sender, IndexingNodeDataEventArgs e)
-        {
+        {   
             // Check whether it is a Media type Image
             if (e.IndexType != IndexTypes.Media || (e.IndexType == IndexTypes.Media && e.NodeId < 1) || e.Node.ExamineNodeTypeAlias() != "Image") return;
+
+            // Remove the commas for the path property (that is necessary to filter queries to list all child documents of a particular parent)
+            // Add as new search field
+            e.Fields.Add("mediaTaggerImagePath", e.Fields["path"].Replace(",", " "));
 
             // Check whether the tags property exists and it is not empty
             var media = ApplicationContext.Current.Services.MediaService.GetById(e.NodeId);
             if (media == null || !media.HasProperty("tags") || string.IsNullOrWhiteSpace(media.GetValue("tags").ToString())) return;
 
             // Write the values back into the index without commas so they are indexed correctly
-            e.Fields.Add("tagsIndexed", media.GetValue("tags").ToString().Replace(",", " "));
+            e.Fields.Add("mediaTaggerImageTags", media.GetValue("tags").ToString().Replace(",", " "));
         }
     }
 }

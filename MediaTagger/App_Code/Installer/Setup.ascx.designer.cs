@@ -7,9 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MediaTagger.App_Plugins.Installer {
-    
-    
-    public partial class Installer {
+namespace MediaTagger.Installer
+{
+
+
+    public partial class Setup
+    {
     }
 }

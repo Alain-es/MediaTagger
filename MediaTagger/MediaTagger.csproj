@@ -223,13 +223,18 @@
     <Compile Include="App_Code\Extensions\QueryableExtensions.cs" />
     <Compile Include="App_Code\Extensions\UserExtensions.cs" />
     <Compile Include="App_Code\Helpers\PermissionHelper.cs" />
+    <Content Include="App_Code\Installer\Setup.ascx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Plugins\**\*.*" />
-    <Compile Include="App_Plugins\Installer\Installer.ascx.cs">
-      <DependentUpon>Installer.ascx</DependentUpon>
+    <Compile Include="App_Code\Installer\Setup.ascx.cs">
+      <DependentUpon>Setup.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="App_Plugins\Installer\Installer.ascx.designer.cs">
-      <DependentUpon>Installer.ascx</DependentUpon>
+    <Compile Include="App_Code\Installer\Setup.ascx.designer.cs">
+      <DependentUpon>Setup.ascx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Controllers\MediaTaggerApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

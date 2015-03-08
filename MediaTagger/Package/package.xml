@@ -7,9 +7,9 @@
       <orgName>MediaTagger.dll</orgName>
     </file>
     <file>
-      <guid>Installer.ascx</guid>
+      <guid>Setup.ascx</guid>
       <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
-      <orgName>Installer.ascx</orgName>
+      <orgName>Setup.ascx</orgName>
     </file>
     <file>
       <guid>mediatagger.css</guid>
@@ -45,6 +45,11 @@
       <guid>_dialog.html</guid>
       <orgPath>/App_Plugins/MediaTagger/Dialog</orgPath>
       <orgName>_dialog.html</orgName>
+    </file>
+    <file>
+      <guid>Logo.png</guid>
+      <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
+      <orgName>Logo.png</orgName>
     </file>
     <file>
       <guid>mediatagger.picker.controller.js</guid>
@@ -93,7 +98,7 @@
       </PreValues>
     </DataType>
     -->
-  </DataTypes>  
+  </DataTypes>
   <Actions>
     <Action runat="install" alias="addDashboardSection" dashboardAlias="MediaTagger">
       <section>
@@ -106,5 +111,5 @@
       </section>
     </Action>
   </Actions>
-  <control>/App_Plugins/MediaTagger/Installer/Installer.ascx</control>
+  <control>/App_Plugins/MediaTagger/Installer/Setup.ascx</control>
 </umbPackage>

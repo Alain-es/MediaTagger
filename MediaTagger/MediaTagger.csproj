@@ -120,6 +120,7 @@
       <HintPath>..\packages\UmbracoCms.Core.7.1.4\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
@@ -227,6 +228,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Plugins\**\*.*" />
+    <Compile Include="App_Code\Helpers\XmlHelper.cs" />
     <Compile Include="App_Code\Installer\Setup.ascx.cs">
       <DependentUpon>Setup.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,6 +238,9 @@
       <DependentUpon>Setup.ascx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="App_Code\PackageActions\DeleteFile.cs" />
+    <Compile Include="App_Code\PackageActions\InstallFiles.cs" />
+    <Compile Include="App_Code\PackageActions\UninstallFiles.cs" />
     <Compile Include="Controllers\MediaTaggerApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

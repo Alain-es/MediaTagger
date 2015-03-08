@@ -12,54 +12,9 @@
       <orgName>Setup.ascx</orgName>
     </file>
     <file>
-      <guid>mediatagger.css</guid>
+      <guid>Install.zip</guid>
       <orgPath>/App_Plugins/MediaTagger</orgPath>
-      <orgName>mediatagger.css</orgName>
-    </file>
-    <file>
-      <guid>mediatagger.resource.js</guid>
-      <orgPath>/App_Plugins/MediaTagger</orgPath>
-      <orgName>mediatagger.resource.js</orgName>
-    </file>
-    <file>
-      <guid>package.manifest</guid>
-      <orgPath>/App_Plugins/MediaTagger</orgPath>
-      <orgName>package.manifest</orgName>
-    </file>
-    <file>
-      <guid>mediatagger.dashboard.controller.js</guid>
-      <orgPath>/App_Plugins/MediaTagger/Dashboard</orgPath>
-      <orgName>mediatagger.dashboard.controller.js</orgName>
-    </file>
-    <file>
-      <guid>_dashboard.html</guid>
-      <orgPath>/App_Plugins/MediaTagger/Dashboard</orgPath>
-      <orgName>_dashboard.html</orgName>
-    </file>
-    <file>
-      <guid>mediatagger.dialog.controller.js</guid>
-      <orgPath>/App_Plugins/MediaTagger/Dialog</orgPath>
-      <orgName>mediatagger.dialog.controller.js</orgName>
-    </file>
-    <file>
-      <guid>_dialog.html</guid>
-      <orgPath>/App_Plugins/MediaTagger/Dialog</orgPath>
-      <orgName>_dialog.html</orgName>
-    </file>
-    <file>
-      <guid>Logo.png</guid>
-      <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
-      <orgName>Logo.png</orgName>
-    </file>
-    <file>
-      <guid>mediatagger.picker.controller.js</guid>
-      <orgPath>/App_Plugins/MediaTagger/Picker</orgPath>
-      <orgName>mediatagger.picker.controller.js</orgName>
-    </file>
-    <file>
-      <guid>_picker.html</guid>
-      <orgPath>/App_Plugins/MediaTagger/Picker</orgPath>
-      <orgName>_picker.html</orgName>
+      <orgName>Install.zip</orgName>
     </file>
   </files>
   <info>
@@ -100,6 +55,8 @@
     -->
   </DataTypes>
   <Actions>
+    <Action runat="install" alias="uninstallFiles" uninstallFiles="~/App_Plugins/MediaTagger/" />
+    <Action runat="install" alias="installFiles" installFiles="~/App_Plugins/MediaTagger/Install.zip" />
     <Action runat="install" alias="addDashboardSection" dashboardAlias="MediaTagger">
       <section>
         <areas>

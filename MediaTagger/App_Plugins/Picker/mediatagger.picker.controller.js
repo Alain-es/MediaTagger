@@ -6,7 +6,7 @@
     function MediaTaggerPickerController($rootScope, $scope, $routeParams, dialogService, entityResource, mediaResource, mediaHelper, $timeout, userService, MediaTaggerResource, searchService) {
 
         // Private folder 
-        if ($scope.model.config.restrictPrivateFolder !== '0') {
+        if ($scope.model.config.restrictPrivateFolder === '1') {
             var contentId = $routeParams.id;
             var startMediaId = $scope.model.config.startMediaId;
             if (!startMediaId)
@@ -86,7 +86,7 @@
             $scope.mediaPicker({
                 startMediaId: $scope.model.config.startMediaId,
                 multiPicker: multiPicker,
-                restrictPrivateFolder: $scope.model.config.restrictPrivateFolder !== '0' ? true : false,
+                restrictPrivateFolder: $scope.model.config.restrictPrivateFolder === '1' ? true : false,
                 callback: function (data) {
 
                     //it's only a single selector, so make it into an array

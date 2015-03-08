@@ -1,7 +1,7 @@
 //used for the media picker dialog
 angular.module("umbraco")
     .controller("MediaTagger.Dialog.Controller",
-        function ($rootScope, $scope, mediaResource, umbRequestHelper, entityResource, $log, mediaHelper, eventsService, treeService, $cookies, assetsService, MediaTaggerResource, angularHelper, $timeout, $element) {
+        function ($q, $rootScope, $scope, mediaResource, umbRequestHelper, entityResource, $log, mediaHelper, eventsService, treeService, $cookies, assetsService, MediaTaggerResource, angularHelper, $timeout, $element) {
 
             // Const
             var tagGroupName = "default"; //"mediaTagger";
@@ -46,7 +46,16 @@ angular.module("umbraco")
             $scope.currentPage = 0;
 
 
-            assetsService.loadJs("/umbraco/lib/typeahead/typeahead.bundle.min.js").then(function () {
+            // Load the typeahead library 
+            var umbracoVersion = Umbraco.Sys.ServerVariables.application.version;
+            var await = [];
+            if (umbracoVersion < "7.2.2") {
+                await.push(assetsService.loadJs('/umbraco/lib/typeahead/typeahead.bundle.min.js', $scope));
+            }
+            else {
+                await.push(assetsService.loadJs('/umbraco/lib/typeahead-js/typeahead.bundle.min.js', $scope));
+            }
+            $q.all(await).then(function () {
 
                 $scope.isLoading = false;
                 $scope.currentTags = [];

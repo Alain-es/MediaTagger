@@ -7,73 +7,53 @@
       <orgName>MediaTagger.dll</orgName>
     </file>
     <file>
-      <guid>package.manifest</guid>
-      <orgPath>/App_Plugins/MediaTagger</orgPath>
-      <orgName>package.manifest</orgName>
-    </file>
-    <file>
       <guid>Installer.ascx</guid>
       <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
       <orgName>Installer.ascx</orgName>
     </file>
     <file>
       <guid>mediatagger.css</guid>
-      <orgPath>/App_Plugins/uDynamic</orgPath>
+      <orgPath>/App_Plugins/MediaTagger</orgPath>
       <orgName>mediatagger.css</orgName>
     </file>
     <file>
       <guid>mediatagger.resource.js</guid>
-      <orgPath>/App_Plugins/uDynamic</orgPath>
+      <orgPath>/App_Plugins/MediaTagger</orgPath>
       <orgName>mediatagger.resource.js</orgName>
     </file>
     <file>
       <guid>package.manifest</guid>
-      <orgPath>/App_Plugins/uDynamic</orgPath>
+      <orgPath>/App_Plugins/MediaTagger</orgPath>
       <orgName>package.manifest</orgName>
     </file>
     <file>
       <guid>mediatagger.dashboard.controller.js</guid>
-      <orgPath>/App_Plugins/uDynamic/Dashboard</orgPath>
+      <orgPath>/App_Plugins/MediaTagger/Dashboard</orgPath>
       <orgName>mediatagger.dashboard.controller.js</orgName>
     </file>
     <file>
       <guid>_dashboard.html</guid>
-      <orgPath>/App_Plugins/uDynamic/Dashboard</orgPath>
+      <orgPath>/App_Plugins/MediaTagger/Dashboard</orgPath>
       <orgName>_dashboard.html</orgName>
     </file>
     <file>
       <guid>mediatagger.dialog.controller.js</guid>
-      <orgPath>/App_Plugins/uDynamic/Dialog</orgPath>
+      <orgPath>/App_Plugins/MediaTagger/Dialog</orgPath>
       <orgName>mediatagger.dialog.controller.js</orgName>
     </file>
     <file>
       <guid>_dialog.html</guid>
-      <orgPath>/App_Plugins/uDynamic/Dialog</orgPath>
+      <orgPath>/App_Plugins/MediaTagger/Dialog</orgPath>
       <orgName>_dialog.html</orgName>
     </file>
     <file>
-      <guid>Installer.ascx</guid>
-      <orgPath>/App_Plugins/uDynamic/Installer</orgPath>
-      <orgName>Installer.ascx</orgName>
-    </file>
-    <file>
-      <guid>Installer.ascx.cs</guid>
-      <orgPath>/App_Plugins/uDynamic/Installer</orgPath>
-      <orgName>Installer.ascx.cs</orgName>
-    </file>
-    <file>
-      <guid>Installer.ascx.designer.cs</guid>
-      <orgPath>/App_Plugins/uDynamic/Installer</orgPath>
-      <orgName>Installer.ascx.designer.cs</orgName>
-    </file>
-    <file>
       <guid>mediatagger.picker.controller.js</guid>
-      <orgPath>/App_Plugins/uDynamic/Picker</orgPath>
+      <orgPath>/App_Plugins/MediaTagger/Picker</orgPath>
       <orgName>mediatagger.picker.controller.js</orgName>
     </file>
     <file>
       <guid>_picker.html</guid>
-      <orgPath>/App_Plugins/uDynamic/Picker</orgPath>
+      <orgPath>/App_Plugins/MediaTagger/Picker</orgPath>
       <orgName>_picker.html</orgName>
     </file>
   </files>

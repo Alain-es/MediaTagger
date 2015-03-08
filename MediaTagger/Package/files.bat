@@ -1,7 +1,7 @@
 @ECHO OFF
 CLS
 
-SET outputRoot=/App_Plugins/uDynamic
+SET outputRoot=/App_Plugins/MediaTagger
 SET outputFile=%cd%\files.txt
 IF EXIST "%outputFile%" DEL "%outputFile%"
 CD ..

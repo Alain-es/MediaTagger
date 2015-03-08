@@ -2,7 +2,7 @@
 (function () {
 
     //Main controller
-    function MediaTaggerDashboardController($log, $rootScope, $scope, assetsService, mediaResource, MediaTaggerResource, umbRequestHelper, angularHelper, $timeout, $element) {
+    function MediaTaggerDashboardController($q, $rootScope, $scope, assetsService, mediaResource, MediaTaggerResource, umbRequestHelper, angularHelper, $timeout, $element) {
 
         // Consts
         var tagGroupName = "default"; //"mediaTagger";
@@ -16,8 +16,16 @@
         $scope.areThereMoreResultsButton = false;
         $scope.currentPage = 0;
 
-
-        assetsService.loadJs("/umbraco/lib/typeahead/typeahead.bundle.min.js").then(function () {
+        // Load the typeahead library 
+        var umbracoVersion = Umbraco.Sys.ServerVariables.application.version;
+        var await = [];
+        if (umbracoVersion < "7.2.2") {
+            await.push(assetsService.loadJs('/umbraco/lib/typeahead/typeahead.bundle.min.js', $scope));
+        }
+        else {
+            await.push(assetsService.loadJs('/umbraco/lib/typeahead-js/typeahead.bundle.min.js', $scope));
+        }
+        $q.all(await).then(function () {
 
             $scope.isLoading = false;
             $scope.currentTags = [];

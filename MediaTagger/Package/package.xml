@@ -16,13 +16,73 @@
       <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
       <orgName>Installer.ascx</orgName>
     </file>
+    <file>
+      <guid>mediatagger.css</guid>
+      <orgPath>/App_Plugins/uDynamic</orgPath>
+      <orgName>mediatagger.css</orgName>
+    </file>
+    <file>
+      <guid>mediatagger.resource.js</guid>
+      <orgPath>/App_Plugins/uDynamic</orgPath>
+      <orgName>mediatagger.resource.js</orgName>
+    </file>
+    <file>
+      <guid>package.manifest</guid>
+      <orgPath>/App_Plugins/uDynamic</orgPath>
+      <orgName>package.manifest</orgName>
+    </file>
+    <file>
+      <guid>mediatagger.dashboard.controller.js</guid>
+      <orgPath>/App_Plugins/uDynamic/Dashboard</orgPath>
+      <orgName>mediatagger.dashboard.controller.js</orgName>
+    </file>
+    <file>
+      <guid>_dashboard.html</guid>
+      <orgPath>/App_Plugins/uDynamic/Dashboard</orgPath>
+      <orgName>_dashboard.html</orgName>
+    </file>
+    <file>
+      <guid>mediatagger.dialog.controller.js</guid>
+      <orgPath>/App_Plugins/uDynamic/Dialog</orgPath>
+      <orgName>mediatagger.dialog.controller.js</orgName>
+    </file>
+    <file>
+      <guid>_dialog.html</guid>
+      <orgPath>/App_Plugins/uDynamic/Dialog</orgPath>
+      <orgName>_dialog.html</orgName>
+    </file>
+    <file>
+      <guid>Installer.ascx</guid>
+      <orgPath>/App_Plugins/uDynamic/Installer</orgPath>
+      <orgName>Installer.ascx</orgName>
+    </file>
+    <file>
+      <guid>Installer.ascx.cs</guid>
+      <orgPath>/App_Plugins/uDynamic/Installer</orgPath>
+      <orgName>Installer.ascx.cs</orgName>
+    </file>
+    <file>
+      <guid>Installer.ascx.designer.cs</guid>
+      <orgPath>/App_Plugins/uDynamic/Installer</orgPath>
+      <orgName>Installer.ascx.designer.cs</orgName>
+    </file>
+    <file>
+      <guid>mediatagger.picker.controller.js</guid>
+      <orgPath>/App_Plugins/uDynamic/Picker</orgPath>
+      <orgName>mediatagger.picker.controller.js</orgName>
+    </file>
+    <file>
+      <guid>_picker.html</guid>
+      <orgPath>/App_Plugins/uDynamic/Picker</orgPath>
+      <orgName>_picker.html</orgName>
+    </file>
   </files>
   <info>
     <package>
       <name>MediaTagger</name>
       <version>0.1.0</version>
       <license url="http://opensource.org/licenses/MIT">MIT License</license>
-      <url>MediaTagger</url>
+      <url>https://our.umbraco.org/projects/backoffice-extensions/media-tagger</url>
       <requirements>
         <major>7</major>
         <minor>1</minor>
@@ -31,9 +91,9 @@
     </package>
     <author>
       <name>Alain</name>
-      <website>-</website>
+      <website>https://github.com/Alain-es/MediaTagger</website>
     </author>
-    <readme><![CDATA[MediaTagger v0.1.0 requires Umbraco v7.1.4 or above]]></readme>
+    <readme><![CDATA[MediaTagger requires Umbraco v7.1.4 or above]]></readme>
   </info>
   <DocumentTypes />
   <Templates />

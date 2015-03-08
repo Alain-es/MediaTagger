@@ -18,7 +18,7 @@
 					},
 					{
 					    label: "Restrict to private folder",
-					    description: "In addition to the previous prevalue, this option restricts to a private folder which is a subfolder of the previous prevalue and which name must be the ID of the content node that contains the media picker property. If no start node is selected (previous prevalue) or if the subfolder doesn't exist, no result will be displayed.",
+					    description: "In addition to the StartMediaId (previous prevalue), this option restricts the results to a 'private folder' which is expected to be a subfolder of the selected StartMediaId (previous prevalue) and whose name must be the ID of the content node that contains the media picker. If the 'private folder' doesn't exist, no result will be displayed.",
 					    key: "restrictPrivateFolder",
 						view: "boolean"
 					}

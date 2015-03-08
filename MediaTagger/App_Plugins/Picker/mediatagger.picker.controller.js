@@ -3,7 +3,30 @@
 
     //Main controller
 
-    function MediaTaggerPickerController($rootScope, $scope, dialogService, entityResource, mediaResource, mediaHelper, $timeout, userService, MediaTaggerResource) {
+    function MediaTaggerPickerController($rootScope, $scope, $routeParams, dialogService, entityResource, mediaResource, mediaHelper, $timeout, userService, MediaTaggerResource, searchService) {
+
+        // Private folder 
+        if ($scope.model.config.restrictPrivateFolder !== '0') {
+            var contentId = $routeParams.id;
+            var startMediaId = $scope.model.config.startMediaId;
+            if (!startMediaId)
+                startMediaId = -1;
+            // Sets startMediaId with an Id that doesn't exist in order to return no result in case the privateFolder is not found
+            $scope.model.config.startMediaId = -9999;
+            // Search media folder with a name that matches contentID
+            searchService.searchMedia({ term: contentId }).then(function (data) {
+                if (data) {
+                    // Check whether the folder's parent node is the StartMediaId node
+                    var privateFolderNode = _.find(data, function (mediaNode) {
+                        var path = mediaNode.path.split(",");
+                        if (path[path.length - 2] == startMediaId)
+                            return mediaNode;
+                    });
+                    if (privateFolderNode)
+                        $scope.model.config.startMediaId = privateFolderNode.id;
+                }
+            });
+        }
 
         //check the pre-values for multi-picker
         var multiPicker = $scope.model.config.multiPicker && $scope.model.config.multiPicker !== '0' ? true : false;
@@ -59,7 +82,7 @@
                 return dialogService.open(options);
             };
 
-                
+
             $scope.mediaPicker({
                 startMediaId: $scope.model.config.startMediaId,
                 multiPicker: multiPicker,

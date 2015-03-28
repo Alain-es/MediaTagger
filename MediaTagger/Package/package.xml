@@ -15,7 +15,7 @@
   <info>
     <package>
       <name>MediaTagger</name>
-      <version>0.1.0</version>
+      <version>0.1.1</version>
       <license url="http://opensource.org/licenses/MIT">MIT License</license>
       <url>https://our.umbraco.org/projects/backoffice-extensions/media-tagger</url>
       <requirements>

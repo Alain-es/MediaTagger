@@ -7,11 +7,6 @@
       <orgName>MediaTagger.dll</orgName>
     </file>
     <file>
-      <guid>Setup.ascx</guid>
-      <orgPath>/App_Plugins/MediaTagger/Installer</orgPath>
-      <orgName>Setup.ascx</orgName>
-    </file>
-    <file>
       <guid>Install.zip</guid>
       <orgPath>/App_Plugins/MediaTagger</orgPath>
       <orgName>Install.zip</orgName>

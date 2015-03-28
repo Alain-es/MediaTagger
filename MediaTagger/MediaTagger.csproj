@@ -221,8 +221,12 @@
     <Compile Include="App_Code\EmbeddedAssembly\EmbeddedResourcePaths.cs" />
     <Compile Include="App_Code\EmbeddedAssembly\RouteConfig.cs" />
     <Compile Include="App_Code\Events\UmbracoStartupEvent.cs" />
+    <Compile Include="App_Code\Extensions\IContentExtensions.cs" />
+    <Compile Include="App_Code\Extensions\IMediaExtensions.cs" />
+    <Compile Include="App_Code\Extensions\IPublishedContentExtensions.cs" />
     <Compile Include="App_Code\Extensions\QueryableExtensions.cs" />
     <Compile Include="App_Code\Extensions\UserExtensions.cs" />
+    <Compile Include="App_Code\Helpers\ContentHelper.cs" />
     <Compile Include="App_Code\Helpers\PermissionHelper.cs" />
     <Content Include="App_Code\Installer\Setup.ascx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

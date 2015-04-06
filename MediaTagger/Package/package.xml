@@ -52,16 +52,8 @@
   <Actions>
     <Action runat="install" alias="uninstallFiles" uninstallFiles="~/App_Plugins/MediaTagger/" />
     <Action runat="install" alias="installFiles" installFiles="~/App_Plugins/MediaTagger/Install.zip" />
-    <Action runat="install" alias="addDashboardSection" dashboardAlias="MediaTagger">
-      <section>
-        <areas>
-          <area>media</area>
-        </areas>
-        <tab caption="Media Tagger">
-          <control>/App_Plugins/MediaTagger/Dashboard/_dashboard.html</control>
-        </tab>
-      </section>
-    </Action>
+    <Action runat="install" alias="uninstallSection" uninstallSection="MediaTagger" />
+    <Action runat="install" alias="installDashboard" dashboardSection="StartupMediaDashboardSection" dashboardCaption="Media Tagger" dashboardControl="/App_Plugins/MediaTagger/Dashboard/_dashboard.html" />
   </Actions>
   <control>/App_Plugins/MediaTagger/Installer/Setup.ascx</control>
 </umbPackage>

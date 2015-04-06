@@ -227,6 +227,8 @@
     <Compile Include="App_Code\Extensions\QueryableExtensions.cs" />
     <Compile Include="App_Code\Extensions\UserExtensions.cs" />
     <Compile Include="App_Code\Helpers\ContentHelper.cs" />
+    <Compile Include="App_Code\Helpers\DashboardHelper.cs" />
+    <Compile Include="App_Code\Helpers\ExceptionHelper.cs" />
     <Compile Include="App_Code\Helpers\PermissionHelper.cs" />
     <Content Include="App_Code\Installer\Setup.ascx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -243,8 +245,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="App_Code\PackageActions\DeleteFile.cs" />
+    <Compile Include="App_Code\PackageActions\InstallDashboard.cs" />
     <Compile Include="App_Code\PackageActions\InstallFiles.cs" />
+    <Compile Include="App_Code\PackageActions\UninstallDashboard.cs" />
     <Compile Include="App_Code\PackageActions\UninstallFiles.cs" />
+    <Compile Include="App_Code\PackageActions\UninstallSection.cs" />
     <Compile Include="Controllers\MediaTaggerApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

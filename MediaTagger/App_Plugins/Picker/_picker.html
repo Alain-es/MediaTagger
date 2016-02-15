@@ -1,7 +1,7 @@
 ﻿<div class="umb-editor umb-mediapicker" ng-controller="MediaTagger.Picker.MediaTaggerPickerController">
 
     <ul ui-sortable="sortableOptions" ng-model="images" class="umb-sortable-thumbnails">
-        <li style="width: 120px; height: 100px; overflow: hidden;" ng-repeat="image in images">
+        <li style="width: 260px; height: 200px; overflow: visible;" ng-repeat="image in images">
             <img ng-src="{{image.thumbnail}}" alt="" ng-show="image.thumbnail">
 
             <span class="icon-holder" ng-hide="image.thumbnail">
@@ -9,7 +9,12 @@
                 <small>{{image.name}}</small>
             </span>
 
-            <a href class="picked-image" ng-click="remove($index)"><i class="icon icon-delete"></i></a>
+            <div class="image-name">
+                <small>{{image.name}}</small>
+            </div>
+
+            <a title="Edit in Media Gallery" href="#media/media/edit/{{image.id}}" target="_blank" class="picked-image media-image"><i class="icon icon-umb-media"></i></a>
+            <a title="Remove image" href class="picked-image" ng-click="remove($index)"><i class="icon icon-delete"></i></a>
         </li>
     </ul>
 

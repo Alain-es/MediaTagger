@@ -1,45 +1,17 @@
-﻿using System;
-using System.Web;
-using System.Web.Mvc;
-using System.Linq;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Dynamic;
-using System.ComponentModel;
-using System.Text;
-
-using System.Web.Http;
-using System.Net.Http;
-
-using umbraco;
-using Umbraco.Core;
-using Umbraco.Core.Dynamics;
-using Umbraco.Core.Models;
-using Umbraco.Core.Logging;
-using Umbraco.Core.Persistence;
-using Umbraco.Core.Persistence.DatabaseAnnotations;
-using Umbraco.Core.Persistence.DatabaseModelDefinitions;
-using Umbraco.Core.IO;
-using umbraco.BusinessLogic.Actions;
-using umbraco.BusinessLogic;
-using Umbraco.Web;
-using Umbraco.Web.Editors;
-using Umbraco.Web.Mvc;
-using Umbraco.Web.WebApi;
-using Umbraco.Web.Models.ContentEditing;
+﻿using AutoMapper;
 using Examine;
-using Examine.Providers;
 using Examine.LuceneEngine;
 using Examine.SearchCriteria;
+using System.Collections.Generic;
+using System.Linq;
+using Umbraco.Core;
+using Umbraco.Core.Models;
+using Umbraco.Web;
+using Umbraco.Web.Editors;
+using Umbraco.Web.Models.ContentEditing;
+using Umbraco.Web.Mvc;
+using Umbraco.Web.WebApi;
 
-using AutoMapper;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-using System.Web.Hosting;
-using System.IO;
-
-using MediaTagger.Helpers;
 
 namespace MediaTagger.Controllers.Api
 {
@@ -59,7 +31,28 @@ namespace MediaTagger.Controllers.Api
             IEnumerable<IMedia> result = new List<IMedia>();
 
             // Get the media items
-            List<int> mediaIds = GetMediasByTags(tags, startMediaId, restrictPrivateFolder).Select(x => x.Id).Skip(pageNumber * pageSize).Take(pageSize != 0 ? pageSize : 999).ToList<int>();
+            var medias = GetMediasByTags(tags, startMediaId, restrictPrivateFolder);
+            List<int> mediaIds = null;
+
+            // If there are no tags then sort results by the most recently updated media item
+            if (string.IsNullOrWhiteSpace(tags))
+            {
+                mediaIds = medias.OrderByDescending(x => x.Fields["updateDate"])
+                    .Select(x => x.Id)
+                    .Skip(pageNumber * pageSize)
+                    .Take(pageSize != 0 ? pageSize : 999)
+                    .ToList<int>();
+            }
+            // If there are tags then keep the lucene default sort order (Lucene provides results by the most relevant hit at the top)
+            else
+            {
+                mediaIds = medias
+                    .Select(x => x.Id)
+                    .Skip(pageNumber * pageSize)
+                    .Take(pageSize != 0 ? pageSize : 999)
+                    .ToList<int>();
+            }
+
             if (mediaIds.Count > 0)
             {
                 //IEnumerable<IMedia> medias = ApplicationContext.Services.MediaService.GetByIds(mediaIds);

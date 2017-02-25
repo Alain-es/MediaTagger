@@ -52,8 +52,11 @@ angular.module("umbraco")
             if (umbracoVersion < "7.2.2") {
                 await.push(assetsService.loadJs('/umbraco/lib/typeahead/typeahead.bundle.min.js', $scope));
             }
-            else {
+            else if (umbracoVersion < "7.3.0") {
                 await.push(assetsService.loadJs('/umbraco/lib/typeahead-js/typeahead.bundle.min.js', $scope));
+            }
+            else {
+                await.push(assetsService.loadJs('/umbraco/lib/typeahead.js/typeahead.bundle.min.js', $scope));
             }
             $q.all(await).then(function () {
 
